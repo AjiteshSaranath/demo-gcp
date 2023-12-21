@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trialservices
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: trialservices
+  template:
+    metadata:
+      labels:
+        app: trialservices
+    spec:
+      containers:
+      - name: trialservices_env
+        image: gcr.io/voicetotext-379213/trialservices_env:latest
+        ports:
+        - containerPort: 3000
+      resources:
+        requests:
+          memory: "512Mi"
+          cpu: "1"
